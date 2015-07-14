@@ -152,7 +152,7 @@ s.options.memSize_(8192*16);
 ~rz[~nx].nodes[\imp2] = {|a| Impulse.ar(a.linlin(-1,1,3,50))}
 ~rz[~nx].nodes[\lfnoise] = {|x| LFDNoise3.ar(x.linexp(-1,1,0.01,2))}
 ~rz[~nx].nodes[\lfsin] = {|x| SinOsc.ar(x.linexp(-1,1,0.01,2))}
-~rz[~nx].nodes[\delay] = {|a,b| DelayC.ar(a,0.4,b.linlin(-1,1,0,0.3, c))}
+~rz[~nx].nodes[\delay] = {|a,b| AllpassC.ar(a,0.4,b.linlin(-1,1,0,0.3, c))}
 ~rz[~nx].nodes[\knlk] = {|a| Klank.ar(`[[200,1000], nil, [1,1]],a)}
 ~rz[~nx].nodes[\knlk2] = {|a,b| Klank.ar(`[[200,1000], nil, [1,1]],Impulse.ar(b.linlin(-1,1,0.5,3)))}
 ~rz[~nx].nodes[\expand] = {|a,b| ({a}!(b*10)).sum }
@@ -238,7 +238,7 @@ if (~gGens == nil, {
 			});
 			~code = ~nodeToCode.(~tree, ~ix);
 			lastGene = gene.copy();
-			~codeDisplay.string_(~code);
+			~codeDisplay.string_(~code, -1, ~codeDisplay.string.size);
 			~drawTree.();
 			try({
 				var synthName = ("gen" ++ ~ix).asSymbol;
