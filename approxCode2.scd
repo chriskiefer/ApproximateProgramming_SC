@@ -11,7 +11,11 @@ https://github.com/chriskiefer/ApproximateProgramming_SC
 Chris Kiefer, 2014-15
 */
 
+// [0] follow this numbered instructions
 
+
+
+// [1] run this block first
 (
 ~sliders = {
 	//make a bank of sliders to control the gene
@@ -148,12 +152,13 @@ Chris Kiefer, 2014-15
 }
 )
 
+//[2] run these functions
 ~sliders.();
 ~approxAlgs.();
 ~setupServer.();
 
 
-//chose some component functions (or make more...)
+//[3] chose some component functions (or make more...)
 ~rz[~nx].nodes[\saw] = {|x,y| Saw.ar(x.linexp(-1,1,20,20000),y.linlin(-1,1,0.2,1))}
 ~rz[~nx].nodes[\pulse] = {|x,y,z| Pulse.ar(x.linexp(-1,1,20,20000),y, z.linlin(-1,1,0.2,1))}
 ~rz[~nx].nodes[\low] = {|a,b|Resonz.ar(a,~to.(b,20,100,0.5))};
@@ -184,18 +189,15 @@ Chris Kiefer, 2014-15
 
 
 
+// [4] run this (it will open up a blank document for the code that gets generated) and return to this document
 (
 //this process is unpredictable, so...
-
 ~codeDisplay = Document.new;
-
 ~data = {1.0.rand.linlin(0,1,-32767,32767)}!25;
-
 )
 
 
-
-~codeLoop.stop
+//[5] run this block
 (
 //this loop generates new synths from the latest gene values
 var gene;
@@ -284,6 +286,10 @@ if (~gGens == nil, {
 )
 
 
+// [6] if you want to stop...
+~codeLoop.stop
+
+// [7]  open up approxTree.scd if you want to see a tree visualisation
 
 
 
